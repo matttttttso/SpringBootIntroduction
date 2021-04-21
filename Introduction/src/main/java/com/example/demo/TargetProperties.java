@@ -7,17 +7,17 @@ import javax.validation.constraints.NotEmpty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Component
 @ConfigurationProperties(prefix = "target")
+@Setter
+@Getter
 public class TargetProperties {
 	@NotEmpty
 	private String host;
 	@Min(0)
 	@Max(65535)
 	private int port;
-	
-	public String getHost() {return host;}
-	public void setHost(String host) {this.host = host;}
-	public int getPort() {return port;}
-	public void setPort(int port) {this.port = port;}
 }

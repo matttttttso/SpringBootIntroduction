@@ -24,5 +24,5 @@ public class User implements Serializable{
 	private String lastName;
 	
 	@Enumerated(EnumType.STRING)
-	private RoleName rolename;
+	private RoleName roleName;
 }

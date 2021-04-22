@@ -3,6 +3,7 @@ package mrs.domain.model;
 import java.io.Serializable;
 
 import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
@@ -11,6 +12,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @SuppressWarnings("serial")
+@Entity
 @Getter
 @Setter
 public class ReservableRoom implements Serializable{
@@ -20,7 +22,7 @@ public class ReservableRoom implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "room_id", insertable = false, updatable = false)
 	@MapsId("roomId")
-	private MeeringRoom meeringRoom;
+	private MeetingRoom meetingRoom;
 
 	public ReservableRoom(ReservableRoomId reservableRoomId) {
 		this.reservableRoomId = reservableRoomId;

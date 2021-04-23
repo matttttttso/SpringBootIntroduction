@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import mrs.domain.model.ReservableRoom;
-import mrs.domain.repository.reservation.ReservableRoomRepository;
+import mrs.domain.repository.room.ReservableRoomRepository;
 
 @Service
 @Transactional

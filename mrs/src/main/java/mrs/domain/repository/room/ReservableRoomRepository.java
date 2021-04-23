@@ -1,4 +1,4 @@
-package mrs.domain.repository.reservation;
+package mrs.domain.repository.room;
 
 import java.time.LocalDate;
 import java.util.List;

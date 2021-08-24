@@ -5,6 +5,8 @@ import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.access.method.P;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -53,5 +55,14 @@ public class ReservationService {
 	
 	public List<Reservation> findReservations(ReservableRoomId reservableRoomId) {
 		return reservationRepository.findByReservableRoom_ReservableRoomIdOrderByStartTimeAsc(reservableRoomId);
+	}
+	
+	@PreAuthorize("hasRole('ADMIN') or #reservation.user.userId == principal.user.userId")
+	public void cancel(@P("reservation") Reservation reservation) {
+		reservationRepository.delete(reservation);
+	}
+	
+	public Reservation findOne(Integer reservationId) {
+		return reservationRepository.findById(reservationId).get();
 	}
 }

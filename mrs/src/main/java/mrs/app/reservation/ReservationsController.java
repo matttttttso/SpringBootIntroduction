@@ -98,9 +98,9 @@ public class ReservationsController {
 			@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @PathVariable("date") LocalDate date,
 			Model model) {
 		
-		User user = userDetails.getUser();
 		try {
-			reservationService.cancel(reservationId, user);
+			Reservation reservation = reservationService.findOne(reservationId);
+			reservationService.cancel(reservation);
 		} catch (AccessDeniedException e) {
 			model.addAttribute("error", e.getMessage());
 			return reserveForm(date, roomId, model);
